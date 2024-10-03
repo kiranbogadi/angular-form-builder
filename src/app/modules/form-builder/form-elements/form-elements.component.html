@@ -1,0 +1,108 @@
+<div *ngIf="BuilderTypes.TEXT === formItem.type">
+  <app-text-field
+    [formItem]="formItem"
+    (saveFormData)="emitData($event)"
+    (deleteFormItem)="deleteItem($event)"
+  ></app-text-field>
+</div>
+
+<div *ngIf="BuilderTypes.NUMBER === formItem.type">
+  <app-number-field
+    [formItem]="formItem"
+    (saveFormData)="emitData($event)"
+    (deleteFormItem)="deleteItem($event)"
+  ></app-number-field>
+</div>
+
+<div *ngIf="BuilderTypes.EMAIL === formItem.type">
+  <app-email-field
+    [formItem]="formItem"
+    (saveFormData)="emitData($event)"
+    (deleteFormItem)="deleteItem($event)"
+  ></app-email-field>
+</div>
+
+<div *ngIf="BuilderTypes.PHONE === formItem.type">
+  <app-phone-field
+    [formItem]="formItem"
+    (saveFormData)="emitData($event)"
+    (deleteFormItem)="deleteItem($event)"
+  ></app-phone-field>
+</div>
+<div *ngIf="BuilderTypes.PASSWORD === formItem.type">
+  <app-password-field
+    [formItem]="formItem"
+    (saveFormData)="emitData($event)"
+    (deleteFormItem)="deleteItem($event)"
+  ></app-password-field>
+</div>
+<div *ngIf="BuilderTypes.DATE === formItem.type">
+  <app-date-field
+    [formItem]="formItem"
+    (saveFormData)="emitData($event)"
+    (deleteFormItem)="deleteItem($event)"
+  ></app-date-field>
+</div>
+<div *ngIf="BuilderTypes.COLOR === formItem.type">
+  <app-color-field
+    [formItem]="formItem"
+    (saveFormData)="emitData($event)"
+    (deleteFormItem)="deleteItem($event)"
+  ></app-color-field>
+</div>
+<div *ngIf="BuilderTypes.TEXT_AREA === formItem.type">
+  <app-textarea-field
+    [formItem]="formItem"
+    (saveFormData)="emitData($event)"
+    (deleteFormItem)="deleteItem($event)"
+  ></app-textarea-field>
+</div>
+<div *ngIf="BuilderTypes.CHECKBOX === formItem.type">
+  <app-checkbox-field
+    [formItem]="formItem"
+    (saveFormData)="emitData($event)"
+    (deleteFormItem)="deleteItem($event)"
+  ></app-checkbox-field>
+</div>
+<div *ngIf="BuilderTypes.RADIO === formItem.type">
+  <app-radio-field
+    [formItem]="formItem"
+    (saveFormData)="emitData($event)"
+    (deleteFormItem)="deleteItem($event)"
+  ></app-radio-field>
+</div>
+<div *ngIf="BuilderTypes.SELECT === formItem.type">
+  <app-select-field
+    [formItem]="formItem"
+    (saveFormData)="emitData($event)"
+    (deleteFormItem)="deleteItem($event)"
+  ></app-select-field>
+</div>
+<div *ngIf="BuilderTypes.HIDDEN === formItem.type">
+  <app-hidden-field
+    [formItem]="formItem"
+    (saveFormData)="emitData($event)"
+    (deleteFormItem)="deleteItem($event)"
+  ></app-hidden-field>
+</div>
+<div *ngIf="BuilderTypes.FILE === formItem.type">
+  <app-file-field
+    [formItem]="formItem"
+    (saveFormData)="emitData($event)"
+    (deleteFormItem)="deleteItem($event)"
+  ></app-file-field>
+</div>
+<div *ngIf="BuilderTypes.BUTTON === formItem.type">
+  <app-button-field
+    [formItem]="formItem"
+    (saveFormData)="emitData($event)"
+    (deleteFormItem)="deleteItem($event)"
+  ></app-button-field>
+</div>
+<div *ngIf="BuilderTypes.DATA_TEXT === formItem.type">
+  <app-datatext-field
+    [formItem]="formItem"
+    (saveFormData)="emitData($event)"
+    (deleteFormItem)="deleteItem($event)"
+  ></app-datatext-field>
+</div>

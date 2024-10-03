@@ -1,0 +1,61 @@
+<div cdkDropListGroup>
+  <div class="forn-build-container form-list">
+    <h2>Fields</h2>
+
+    <div
+      class="form-components"
+      cdkDropList
+      cdkDropListSortingDisabled
+      [cdkDropListData]="inputs"
+      [cdkDropListEnterPredicate]="noReturnPredicate"
+    >
+      <div class="main-box" *ngFor="let item of inputs" cdkDrag>
+        {{ item.input }}
+        <div class="main-box" *cdkDragPlaceholder></div>
+      </div>
+
+      <div class="placeholder-box" *ngFor="let item of inputs">
+        {{ item.input }}
+      </div>
+    </div>
+  </div>
+
+  <div class="forn-build-container list-item">
+    <h2>Form Builder</h2>
+
+    <div
+      class="builder-container"
+      cdkDropList
+      [cdkDropListData]="formData"
+      (cdkDropListDropped)="dropInBuilder($event)"
+    >
+      <div *ngFor="let item of formData" cdkDrag>
+        <div class="main-box" *cdkDragPlaceholder></div>
+        <div class="" *cdkDragPreview>
+          <div class="main-box">
+            {{ item.input }}
+          </div>
+        </div>
+        <app-form-elements
+          [formItem]="item"
+          (saveFormData)="updateData($event)"
+          (deleteFormItem)="deleteItem($event)"
+        ></app-form-elements>
+      </div>
+    </div>
+
+    <div class="btn btn-primary" (click)="saveForm()">Save Form</div>
+  </div>
+  <div
+    style="
+      width: 400px;
+      max-width: 100%;
+      margin: 0 25px 25px 0;
+      display: inline-block;
+      vertical-align: top;
+      float: right;
+    "
+  >
+    <!-- <pre>{{ renderJSON() }}</pre> -->
+  </div>
+</div>

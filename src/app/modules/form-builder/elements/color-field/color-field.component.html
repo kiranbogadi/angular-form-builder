@@ -1,0 +1,68 @@
+<div
+  class="form-builder-input"
+  (outsideClick)="showPopup = false"
+  appOutsideClick
+>
+  <div #formInputRef class="input-element" (click)="showPopup = true">
+    <div class="overlay"></div>
+    <div class="input-view">
+      <label
+        *ngIf="formData.label"
+        class="control-label"
+        [class]="formData.labelClass"
+      >
+        {{ formData.label }}
+        <span *ngIf="formData.required" class="required"></span>
+      </label>
+      <input
+        [type]="formData.type"
+        class="input-large field form-control input-color"
+        [class]="formData.cssClass"
+        [disabled]="formData.disabled"
+        [readonly]="formData.readOnly"
+        [value]="formData.initialValue"
+      />
+    </div>
+  </div>
+  <div *ngIf="showPopup" class="popover" role="tooltip">
+    <div class="popover-head">
+      <h3 class="popover-title">Color</h3>
+      <span (click)="showPopup = false" class="icon icon-close"></span>
+    </div>
+
+    <form [formGroup]="inputForm" (ngSubmit)="submit()">
+      <div class="popover-content">
+        <div class="popover-content-settings">
+          <div class="simplebar-content">
+            <app-popup-input-elem
+              [control]="inputForm.controls"
+              [options]="inputFields"
+            ></app-popup-input-elem>
+
+            <app-popup-choice-elem
+              [formArray]="inputForm.get('customAttributes')"
+              label="Custom Attributes"
+              choiceOption="customAttributes"
+              (addItem)="addItem($event)"
+              (removeItem)="removeItem($event)"
+            ></app-popup-choice-elem>
+
+            <app-popup-check-elem
+              [control]="inputForm.controls"
+              [options]="checkInputOptions"
+            ></app-popup-check-elem>
+          </div>
+        </div>
+        <hr />
+        <div class="popover-content-actions">
+          <button type="submit" class="btn btn-primary" title="Save">
+            Save
+          </button>
+          <a class="btn btn-info" title="Cancel" (click)="deleteItem()"
+            >Delete</a
+          >
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

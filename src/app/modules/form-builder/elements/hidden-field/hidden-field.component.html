@@ -1,0 +1,58 @@
+<div
+  class="form-builder-input"
+  (outsideClick)="showPopup = false"
+  appOutsideClick
+>
+  <div #formInputRef class="input-element" (click)="showPopup = true">
+    <div class="overlay"></div>
+    <div class="input-view">
+      <label class="hidden">Hidden</label>
+      <input
+        [type]="formData.type"
+        [class]="formData.cssClass"
+        [value]="formData.initialValue"
+      />
+    </div>
+  </div>
+  <div *ngIf="showPopup" class="popover" role="tooltip">
+    <div class="popover-head">
+      <h3 class="popover-title">Hidden</h3>
+      <span (click)="showPopup = false" class="icon icon-close"></span>
+    </div>
+
+    <form [formGroup]="inputForm" (ngSubmit)="submit()">
+      <div class="popover-content">
+        <div class="popover-content-settings">
+          <div class="simplebar-content">
+            <app-popup-input-elem
+              [control]="inputForm.controls"
+              [options]="inputFields"
+            ></app-popup-input-elem>
+
+            <app-popup-choice-elem
+              [formArray]="inputForm.get('customAttributes')"
+              label="Custom Attributes"
+              choiceOption="customAttributes"
+              (addItem)="addItem($event)"
+              (removeItem)="removeItem($event)"
+            ></app-popup-choice-elem>
+
+            <app-popup-check-elem
+              [control]="inputForm.controls"
+              [options]="checkInputOptions"
+            ></app-popup-check-elem>
+          </div>
+        </div>
+        <hr />
+        <div class="popover-content-actions">
+          <button type="submit" class="btn btn-primary" title="Save">
+            Save
+          </button>
+          <a class="btn btn-info" title="Cancel" (click)="deleteItem()"
+            >Delete</a
+          >
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<div
+  class="form-builder-input"
+  (outsideClick)="showPopup = false"
+  appOutsideClick
+>
+  <div #formInputRef class="input-element" (click)="showPopup = true">
+    <div class="overlay"></div>
+    <div class="input-view">
+      <input
+        class="btn btn-primary"
+        [type]="formData.type"
+        [disabled]="formData.disabled"
+        [value]="formData.label"
+      />
+    </div>
+  </div>
+  <div *ngIf="showPopup" class="popover" role="tooltip">
+    <div class="popover-head">
+      <h3 class="popover-title">Text</h3>
+      <span (click)="showPopup = false" class="icon icon-close"></span>
+    </div>
+
+    <form [formGroup]="inputForm" (ngSubmit)="submit()">
+      <div class="popover-content">
+        <div class="popover-content-settings">
+          <div class="simplebar-content">
+            <div class="form-group">
+              <label class="control-label"> Button Type </label>
+              <select
+                class="input-large field form-control"
+                formControlName="type"
+              >
+                <option value="button">Button</option>
+                <option value="submit">Submit</option>
+                <option value="reset">Reset</option>
+              </select>
+            </div>
+            <app-popup-input-elem
+              [control]="inputForm.controls"
+              [options]="inputFields"
+            ></app-popup-input-elem>
+
+            <app-popup-choice-elem
+              [formArray]="inputForm.get('customAttributes')"
+              label="Custom Attributes"
+              choiceOption="customAttributes"
+              (addItem)="addItem($event)"
+              (removeItem)="removeItem($event)"
+            ></app-popup-choice-elem>
+
+            <app-popup-check-elem
+              [control]="inputForm.controls"
+              [options]="checkInputOptions"
+            ></app-popup-check-elem>
+          </div>
+        </div>
+        <hr />
+        <div class="popover-content-actions">
+          <button type="submit" class="btn btn-primary" title="Save">
+            Save
+          </button>
+          <a class="btn btn-info" title="Cancel" (click)="deleteItem()"
+            >Delete</a
+          >
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

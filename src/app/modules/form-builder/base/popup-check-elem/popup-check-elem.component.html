@@ -1,0 +1,11 @@
+<div class="checkbox" *ngFor="let option of options">
+  <label>
+    <input
+      type="checkbox"
+      class="input-inline field"
+      [name]="option.value"
+      [formControl]="control[option.value]"
+    />
+    {{ option.label }}
+  </label>
+</div>

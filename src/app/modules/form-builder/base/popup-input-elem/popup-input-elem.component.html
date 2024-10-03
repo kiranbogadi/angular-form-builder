@@ -1,0 +1,16 @@
+<div class="form-group" *ngFor="let option of options">
+  <label class="control-label"> {{ option.label }} </label>
+  <input
+    *ngIf="option.type !== 'textarea'"
+    class="input-large field form-control"
+    [type]="option.type"
+    [name]="option.value"
+    [formControl]="control[option.value]"
+  />
+  <textarea
+    *ngIf="option.type === 'textarea'"
+    class="input-large field form-control"
+    [name]="option.value"
+    [formControl]="control[option.value]"
+  ></textarea>
+</div>

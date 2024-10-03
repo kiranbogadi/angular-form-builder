@@ -1,0 +1,69 @@
+<div class="form-group field field-choice">
+  <div class="choice-head">
+    <label class="control-label"> {{ label }} </label>
+    <label *ngIf="images" for="images" class="images-check">
+      <input
+        type="checkbox"
+        name="images"
+        id="images"
+        [ngModelOptions]="{ standalone: true }"
+        [(ngModel)]="checkImage"
+      />
+      Images
+    </label>
+    <span class="icon icon-add" (click)="addCustomArrayForm()"></span>
+  </div>
+
+  <div class="choices">
+    <div
+      class="choice"
+      *ngFor="let group of formArray.controls; let i = index"
+      [formGroup]="group"
+    >
+      <div class="row-no-gutters">
+        <div *ngIf="selectCheck" class="choice-value">
+          <input
+            type="checkbox"
+            name="selected"
+            (change)="updateSelection(i)"
+            formControlName="selected"
+          />
+        </div>
+        <div class="no-padding choice-answer">
+          <input
+            type="text"
+            class="form-control input-sm"
+            formControlName="key"
+            placeholder="Key"
+          />
+        </div>
+        <div class="choice-value">
+          <input
+            type="text"
+            class="form-control input-sm"
+            formControlName="value"
+            placeholder="Value"
+          />
+        </div>
+        <div class="actions">
+          <span
+            class="icon icon-close"
+            (click)="removeCustomAttribute(i)"
+          ></span>
+        </div>
+      </div>
+      <div
+        *ngIf="checkImage"
+        class="row-no-gutters"
+        style="padding: 0 24px; margin-bottom: 20px"
+      >
+        <input
+          type="text"
+          class="form-control input-sm"
+          formControlName="image"
+          placeholder="image"
+        />
+      </div>
+    </div>
+  </div>
+</div>
